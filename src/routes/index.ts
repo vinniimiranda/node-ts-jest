@@ -6,7 +6,7 @@ class Routing {
     this.router = Router();
     this.router.get('/', (req: Request, res: Response) =>
       res.status(200).json({
-        root: 'Api root route'
+        root: 'Api root routes !!!'
       })
     );
   }
