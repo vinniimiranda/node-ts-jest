@@ -1,10 +1,10 @@
+import { UserFactory } from './../../database/factories/UserFactory';
 import AppServer from '../../server';
 import request from 'supertest';
-import factory from '../utils/factories';
 
 describe('User tests suite', () => {
   it('should create an user', async () => {
-    const user = await factory.attrs('User');
+    const user = await new UserFactory().create();
 
     const response = await request(AppServer)
       .post('/users')
