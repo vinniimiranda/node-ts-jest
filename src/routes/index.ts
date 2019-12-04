@@ -1,4 +1,5 @@
 import { Router, Request, Response } from 'express';
+import UserController from '../controllers/UserController';
 
 class Routing {
   router: Router;
@@ -9,6 +10,7 @@ class Routing {
         root: 'Api root routes !!!'
       })
     );
+    this.router.use('/users', UserController.routes());
   }
 }
 

@@ -2,7 +2,7 @@ import express from 'express';
 import routes from './routes';
 
 export default class AppServer {
-  public server: express.Application;
+  server: express.Application;
 
   constructor() {
     this.server = express();
