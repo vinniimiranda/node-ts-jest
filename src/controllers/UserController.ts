@@ -1,5 +1,7 @@
 import { Request, Response, Router } from 'express';
+import validate from 'express-validation';
 import User from '../models/UserModel';
+import { UserStoreValidation } from '../validation/UserValidation';
 
 class UserController {
   private router = Router();
@@ -9,7 +11,7 @@ class UserController {
   }
 
   public routes() {
-    this.router.post('/', this.store);
+    this.router.post('/', validate(UserStoreValidation), this.store);
     this.router.get('/', this.index);
     return this.router;
   }
@@ -21,9 +23,8 @@ class UserController {
       });
       return;
     }
-    res.status(201).json({
-      id: 1
-    });
+    const user = await User.create({ ...req.body });
+    res.status(201).json(user);
   }
 
   private async index(req: Request, res: Response): Promise<any> {
