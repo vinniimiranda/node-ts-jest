@@ -1,4 +1,4 @@
-import * as path from 'path';
+import path from 'path';
 import { Sequelize } from 'sequelize-typescript';
 
 class Connection {
@@ -6,16 +6,15 @@ class Connection {
     this.connect();
   }
 
-  private async connect(): Promise<any> {
+  private async connect(): Promise<Sequelize> {
     try {
       const db = await new Sequelize({
-        dialect: 'sqlite',
-        host: 'localhost',
-        port: parseInt('5432'),
-        database:
-          process.env.NODE_ENV === 'test' ? 'ali_lite_test' : 'ali_lite',
-        username: 'postgres',
-        password: 'postgres',
+        dialect: process.env.DB_DIALECT,
+        host: process.env.DB_HOST,
+        port: parseInt(process.env.DB_PORT),
+        database: process.env.DB_NAME,
+        username: process.env.DB_USER,
+        password: process.env.DB_PASSWORD,
         storage: './src/__tests__/database.sqlite',
         operatorsAliases: false,
         logging: false,
@@ -34,7 +33,9 @@ class Connection {
           );
         }
       });
-      db.sync();
+      await db.sync();
+
+      return db;
     } catch (err) {
       throw new Error(err);
     }

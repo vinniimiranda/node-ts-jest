@@ -3,7 +3,5 @@
   "ignore": ["src/__tests__"],
   "exec": "npm start",
   "ext": "ts",
-  "events": {
-    "restart": "yarn tsc"
-  }
+  "events": {}
 }
