@@ -13,4 +13,12 @@ export class UserFactory implements FactoryInterface {
 
     return user.toJSON();
   }
+
+  public attrs(): User {
+    return {
+      username: faker.internet.userName(),
+      email: faker.internet.email(),
+      password: faker.internet.password()
+    } as User;
+  }
 }

@@ -4,7 +4,7 @@ import request from 'supertest';
 
 describe('User tests suite', () => {
   it('should create an user', async () => {
-    const user = await new UserFactory().create();
+    const user = new UserFactory().attrs();
 
     const response = await request(AppServer)
       .post('/users')
