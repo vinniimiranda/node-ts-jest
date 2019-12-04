@@ -6,11 +6,16 @@ export default class AppServer {
 
   constructor() {
     this.server = express();
+    this.middlewares();
     this.routes();
   }
 
   private routes() {
     this.server.use(routes);
+  }
+
+  private middlewares() {
+    this.server.use(express.json());
   }
 
   public listen(port: number) {
