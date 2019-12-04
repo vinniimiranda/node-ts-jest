@@ -4,7 +4,8 @@ import User from '../../models/UserModel';
 
 factory.define('User', User, {
   name: faker.name.findName(),
-  email: faker.internet.email()
+  email: faker.internet.email(),
+  password: faker.internet.password()
 });
 
 export default factory;
