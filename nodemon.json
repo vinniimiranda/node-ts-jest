@@ -2,5 +2,8 @@
   "watch": ["src", "."],
   "ignore": ["src/__tests__"],
   "exec": "npm start",
-  "ext": "ts"
+  "ext": "ts",
+  "events": {
+    "restart": "yarn tsc"
+  }
 }
