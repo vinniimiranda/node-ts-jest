@@ -2,13 +2,8 @@ import AppServer from '../../server';
 import request from 'supertest';
 
 describe('User tests suite', () => {
-  let App = null;
-  beforeAll(() => {
-    App = new AppServer().server;
-  });
-
   it('should create an user', async () => {
-    const reponse = await request(App)
+    const reponse = await request(AppServer)
       .post('/users')
       .send({});
 

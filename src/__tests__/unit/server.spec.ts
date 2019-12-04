@@ -2,15 +2,10 @@ import AppServer from '../../server';
 import request from 'supertest';
 
 describe('Server Test Suite', () => {
-  let App = null;
-  beforeAll(() => {
-    App = new AppServer().server;
-  });
-
   it('Should be up', async () => {
-    const server = await request(App).get('/');
+    const response = await request(AppServer).get('/');
 
-    // expect(server.status).toBe(200);
-    expect(server.status).not.toBe(500);
+    expect(response.status).toBe(200);
+    expect(response.status).not.toBe(500);
   });
 });

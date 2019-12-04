@@ -1,7 +1,7 @@
 import express from 'express';
 import routes from './routes';
 
-export default class AppServer {
+class AppServer {
   server: express.Application;
 
   constructor() {
@@ -17,10 +17,5 @@ export default class AppServer {
   private middlewares() {
     this.server.use(express.json());
   }
-
-  public listen(port: number) {
-    this.server.listen(port, () =>
-      console.log(`Server running at port: ${port}`)
-    );
-  }
 }
+export default new AppServer().server;
