@@ -2,6 +2,9 @@ import Joi from 'joi';
 
 export const UserStoreValidation = {
   body: {
+    username: Joi.string()
+      .min(3)
+      .max(20),
     email: Joi.string()
       .email()
       .required(),
