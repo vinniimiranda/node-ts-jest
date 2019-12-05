@@ -13,6 +13,7 @@ describe('User tests suite', () => {
     expect(response.status).toBe(201);
     expect(response.status).not.toBe(400);
     expect(response.body).toHaveProperty('id');
+    expect(response.body).not.toHaveProperty('password_hash');
   });
 
   it('should not allow to create an user without e-mail', async () => {
@@ -34,6 +35,7 @@ describe('User tests suite', () => {
 
     for (const user of response.body) {
       expect(user).toBeInstanceOf(Object);
+      expect(user).not.toHaveProperty('password_hash');
     }
   });
 });

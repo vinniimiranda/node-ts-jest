@@ -19,11 +19,14 @@ class UserController {
 
   private async store(req: Request, res: Response): Promise<any> {
     const user = await User.create({ ...req.body });
+    user.password_hash = undefined;
     res.status(201).json(user);
   }
 
   private async index(req: Request, res: Response): Promise<any> {
-    const users = await User.findAll();
+    const users = await User.findAll({
+      attributes: { exclude: ['password_hash'] }
+    });
     res.status(200).json(users);
   }
 }
