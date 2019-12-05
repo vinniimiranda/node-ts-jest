@@ -48,8 +48,6 @@ export default class User extends Model<User> {
 
   @BeforeSave
   static async beforeSaveHook(user: User, options: any): Promise<void> {
-    if (user.password) {
-      user.password_hash = await bcryptjs.hash(user.password, 8);
-    }
+    user.password_hash = await bcryptjs.hash(user.password, 8);
   }
 }
