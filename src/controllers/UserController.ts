@@ -20,6 +20,7 @@ class UserController {
   private async store(req: Request, res: Response): Promise<any> {
     const user = await User.create({ ...req.body });
     user.password_hash = undefined;
+    user.password = undefined;
     res.status(201).json(user);
   }
 
