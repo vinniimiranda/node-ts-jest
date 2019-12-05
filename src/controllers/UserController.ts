@@ -1,5 +1,6 @@
 import { Request, Response, Router } from 'express';
 import validate from 'express-validation';
+
 import User from '../models/UserModel';
 import { UserStoreValidation } from '../validation/UserValidation';
 

@@ -7,9 +7,11 @@ import {
   UpdatedAt,
   PrimaryKey,
   Unique,
-  AutoIncrement
+  AutoIncrement,
+  BeforeSave,
+  DataType
 } from 'sequelize-typescript';
-
+import bcryptjs from 'bcryptjs';
 @Table({
   tableName: 'users'
 })
@@ -26,8 +28,11 @@ export default class User extends Model<User> {
   @Column
   public username: string;
 
+  @Column({ type: DataType.VIRTUAL })
+  public password;
+
   @Column
-  public password: string;
+  public password_hash: string;
 
   @CreatedAt
   @Column({ field: 'created_at' })
@@ -40,4 +45,11 @@ export default class User extends Model<User> {
   @DeletedAt
   @Column({ field: 'deleted_at' })
   public deletedAt: Date;
+
+  @BeforeSave
+  static async beforeSaveHook(user: User, options: any): Promise<void> {
+    if (user.password) {
+      user.password_hash = await bcryptjs.hash(user.password, 8);
+    }
+  }
 }

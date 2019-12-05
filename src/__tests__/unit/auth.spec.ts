@@ -12,5 +12,26 @@ describe('Auth tests', () => {
 
     expect(response.status).toBe(200);
     expect(response.body).toHaveProperty('token');
+    expect(response.body).toHaveProperty('user');
+  });
+
+  it('Shoud return 404 when user is not found', async () => {
+    const user = new UserFactory().attrs();
+
+    const response = await request(AppServer)
+      .post('/auth/login')
+      .send(user);
+
+    expect(response.status).toBe(404);
+  });
+
+  it('Shoud return 400 for invalid credentials', async () => {
+    const user = await new UserFactory().create();
+
+    const response = await request(AppServer)
+      .post('/auth/login')
+      .send({ ...user, password: '123456' });
+
+    expect(response.status).toBe(400);
   });
 });
