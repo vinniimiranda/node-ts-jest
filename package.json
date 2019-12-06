@@ -9,11 +9,14 @@
     "start": "ts-node src/index.ts",
     "prod": "yarn run build && node dist/index.js",
     "tsc:watch": "yarn run tsc --watch",
+    "pretest": "SET NODE_ENV=test&& yarn db:migrate",
     "test": "jest",
+    "posttest": "SET NODE_ENV=test&& yarn db:migrate:undo",
     "db:migrate": "./node_modules/.bin/sequelize db:migrate",
     "db:migrate:undo": "./node_modules/.bin/sequelize db:migrate:undo:all",
     "db:seed": "./node_modules/.bin/sequelize db:seed:all",
-    "db:seed:undo": "./node_modules/.bin/sequelize db:seed:undo:all"
+    "db:seed:undo": "./node_modules/.bin/sequelize db:seed:undo:all",
+    "db:up": "docker-compose up --build"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
