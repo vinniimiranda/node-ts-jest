@@ -16,7 +16,7 @@
     "db:migrate:undo": "./node_modules/.bin/sequelize db:migrate:undo:all",
     "db:seed": "./node_modules/.bin/sequelize db:seed:all",
     "db:seed:undo": "./node_modules/.bin/sequelize db:seed:undo:all",
-    "db:up": "docker-compose up --build"
+    "db:up": "docker-compose up --build -d"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
