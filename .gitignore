@@ -1,6 +1,6 @@
 node_modules
 dist
 src/__tests__/coverage
-
+database.sqlite
 .env
 .env.test

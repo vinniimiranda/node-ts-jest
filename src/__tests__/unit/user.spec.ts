@@ -4,7 +4,10 @@ import request from 'supertest';
 
 describe('User tests suite', () => {
   it('should create an user', async () => {
+    jest.setTimeout(30000);
+
     const user = new UserFactory().attrs();
+    console.log(user);
 
     const response = await request(AppServer)
       .post('/users')
