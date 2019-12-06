@@ -11,7 +11,9 @@
     "tsc:watch": "yarn run tsc --watch",
     "test": "jest",
     "db:migrate": "./node_modules/.bin/sequelize db:migrate",
-    "db:migrate:undo": "./node_modules/.bin/sequelize db:migrate:undo:all"
+    "db:migrate:undo": "./node_modules/.bin/sequelize db:migrate:undo:all",
+    "db:seed": "./node_modules/.bin/sequelize db:seed:all",
+    "db:seed:undo": "./node_modules/.bin/sequelize db:seed:undo:all"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -33,7 +35,6 @@
     "supertest": "^4.0.2",
     "ts-config": "^20.10.0",
     "ts-jest": "^24.2.0",
-    "ts-node": "^8.5.4",
     "typescript": "^3.7.3"
   },
   "devDependencies": {
@@ -45,7 +46,6 @@
     "@types/sequelize": "^4.28.8",
     "@types/supertest": "^2.0.8",
     "sequelize-cli": "^5.5.1",
-    "ts-node": "3.3.0",
-    "typescript": "3.3.3333"
+    "ts-node": "^8.5.4"
   }
 }

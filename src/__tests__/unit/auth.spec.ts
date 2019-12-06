@@ -13,8 +13,6 @@ describe('Auth tests', () => {
     expect(response.status).toBe(200);
     expect(response.body).toHaveProperty('token');
     expect(response.body).toHaveProperty('user');
-    console.log(response.body.user);
-
     expect(response.body.user).not.toHaveProperty('password_hash');
   });
 
