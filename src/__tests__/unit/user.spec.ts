@@ -7,7 +7,6 @@ describe('User tests suite', () => {
     jest.setTimeout(30000);
 
     const user = new UserFactory().attrs();
-    console.log(user);
 
     const response = await request(AppServer)
       .post('/users')
