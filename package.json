@@ -9,8 +9,9 @@
     "start": "ts-node src/index.ts",
     "prod": "yarn run build && node dist/index.js",
     "tsc:watch": "yarn run tsc --watch",
-    "pretest": "NODE_ENV=test && yarn db:migrate",
+    "pretest": "cross-env NODE_ENV=test yarn db:migrate",
     "test": "jest",
+    "posttest": "cross-env NODE_ENV=test yarn db:migrate:undo",
     "db:migrate": "./node_modules/.bin/sequelize db:migrate",
     "db:migrate:undo": "./node_modules/.bin/sequelize db:migrate:undo:all",
     "db:seed": "./node_modules/.bin/sequelize db:seed:all",
@@ -53,6 +54,7 @@
     "@types/node": "^8.0.29",
     "@types/sequelize": "^4.28.8",
     "@types/supertest": "^2.0.8",
+    "cross-env": "^6.0.3",
     "husky": "^3.1.0",
     "sequelize-cli": "^5.5.1",
     "ts-node": "^8.5.4"
