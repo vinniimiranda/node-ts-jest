@@ -18,7 +18,7 @@ describe('User tests suite', () => {
     expect(response.body).not.toHaveProperty('password_hash');
   });
 
-  it('should not allow to create an user without e-mail', async () => {
+  it('should not allow to create an user without e-mail.', async () => {
     const response = await request(AppServer)
       .post('/users')
       .send();
